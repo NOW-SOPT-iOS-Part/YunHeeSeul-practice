@@ -19,6 +19,7 @@
 		CA1E389B2BBC690B008D824E /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA1E389A2BBC690B008D824E /* Pretendard-Regular.otf */; };
 		CA1E389D2BBC6914008D824E /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA1E389C2BBC6914008D824E /* Pretendard-SemiBold.otf */; };
 		CA1E389F2BBC6AB7008D824E /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1E389E2BBC6AB7008D824E /* UIFont+.swift */; };
+		CA1E38A12BBC6DFE008D824E /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1E38A02BBC6DFE008D824E /* UITextField+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		CA1E389A2BBC690B008D824E /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		CA1E389C2BBC6914008D824E /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		CA1E389E2BBC6AB7008D824E /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		CA1E38A02BBC6DFE008D824E /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				CA1E38882BBB4749008D824E /* LaunchScreen.storyboard */,
 				CA1E388B2BBB4749008D824E /* Info.plist */,
 				CA1E389E2BBC6AB7008D824E /* UIFont+.swift */,
+				CA1E38A02BBC6DFE008D824E /* UITextField+.swift */,
 			);
 			path = "34th-Sopt-Seminar";
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA1E38822BBB4748008D824E /* ViewController.swift in Sources */,
+				CA1E38A12BBC6DFE008D824E /* UITextField+.swift in Sources */,
 				CA1E38922BBB4A27008D824E /* WelcomeViewController.swift in Sources */,
 				CA1E387E2BBB4748008D824E /* AppDelegate.swift in Sources */,
 				CA1E38952BBB4A3B008D824E /* LoginViewController.swift in Sources */,
