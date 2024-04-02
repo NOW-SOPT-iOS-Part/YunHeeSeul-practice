@@ -8,29 +8,38 @@
 import UIKit
 
 enum FontName {
-    case head1_extraBold
-    case body1_bold
-    case body1_semiBold
+    case head1
+    case subhead1, subhead2, subhead3, subhead4, subhead5
+    case info12
+    
     
     var rawValue: String {
         switch self {
-        case .head1_extraBold:
+        case .head1:
             return "Pretendard-ExtraBold"
-        case .body1_bold:
+        case .subhead1, .subhead3:
             return "Pretendard-Bold"
-        case .body1_semiBold:
+        case .subhead4:
             return "Pretendard-SemiBold"
+        case .subhead2, .subhead5, .info12:
+            return "Pretendard-Regular"
         }
     }
     
     var size: CGFloat {
         switch self {
-        case .head1_extraBold:
+        case .head1:
             return 25
-        case .body1_bold:
+        case .subhead1:
             return 18
-        case .body1_semiBold:
+        case .subhead2:
+            return 16
+        case .subhead3:
+            return 15
+        case .subhead4, .subhead5:
             return 14
+        case .info12:
+            return 12
 
         }
     }
