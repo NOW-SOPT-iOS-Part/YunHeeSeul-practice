@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
         label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 2
+        label.font = UIFont.pretendard(.body1_bold)
         return label
     }()
 
@@ -22,6 +23,7 @@ class LoginViewController: UIViewController {
         let textField = UITextField(frame: CGRect(x: 20, y: 276, width: 335, height: 52))
         textField.placeholder = "아이디를 입력해주세요"
         textField.backgroundColor = UIColor(red: 221/255, green: 222/255, blue: 227/255, alpha: 1)
+        textField.font = UIFont.pretendard(.body1_semiBold)
         return textField
     }()
 
@@ -29,6 +31,7 @@ class LoginViewController: UIViewController {
         let textField = UITextField(frame: CGRect(x: 20, y: 335, width: 335, height: 52))
         textField.placeholder = "비밀번호를 입력해주세요"
         textField.backgroundColor = UIColor(red: 221/255, green: 222/255, blue: 227/255, alpha: 1)
+        textField.font = UIFont.pretendard(.body1_semiBold)
         return textField
     }()
     
@@ -38,6 +41,7 @@ class LoginViewController: UIViewController {
         button.setTitle("로그인하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
+        button.titleLabel?.font = UIFont.pretendard(.body1_bold)
         return button
     }()
     
