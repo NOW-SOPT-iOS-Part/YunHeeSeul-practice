@@ -16,9 +16,9 @@ class WelcomeViewController: UIViewController {
     }()
     
     private let welcomeLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 140, y: 295, width: 95, height: 60))
+        let label = UILabel(frame: CGRect(x: 140, y: 295, width: 105, height: 60))
         label.textColor = UIColor(resource: .black)
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         label.textAlignment = .center
         label.text = "???님\n반가워요!"
         label.font = UIFont.pretendard(.head1)

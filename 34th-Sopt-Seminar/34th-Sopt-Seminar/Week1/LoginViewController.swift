@@ -42,6 +42,7 @@ class LoginViewController: UIViewController {
                                forBorderWidth: 0,
                                forCornerRadius: 3)
         textField.setLeftPadding(amount: 23)
+        textField.isSecureTextEntry = true
         return textField
     }()
     
@@ -61,12 +62,18 @@ class LoginViewController: UIViewController {
 
         self.view.backgroundColor = .white
         setLayout()
+        setDelegate()
     }
 
     private func setLayout() {
         [titleLabel, idTextField, passwordTextField, loginButton].forEach {
             self.view.addSubview($0)
         }
+    }
+    
+    private func setDelegate() {
+        self.idTextField.delegate = self
+        self.passwordTextField.delegate = self
     }
     
     @objc
@@ -89,4 +96,29 @@ class LoginViewController: UIViewController {
     }
     
     
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing (_ textField: UITextField) {
+        
+        if textField.placeholder == "아이디" {
+            self.idTextField.layer.borderWidth = 2
+            self.idTextField.layer.borderColor = UIColor(resource: .grey500).cgColor
+        } else {
+            self.passwordTextField.layer.borderWidth = 2
+            self.passwordTextField.layer.borderColor = UIColor(resource: .grey500).cgColor
+        }
+
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if textField.placeholder == "아이디" {
+            self.idTextField.layer.borderWidth = 0
+            self.idTextField.layer.borderColor = UIColor(resource: .grey200).cgColor
+        } else {
+            self.passwordTextField.layer.borderWidth = 0
+            self.passwordTextField.layer.borderColor = UIColor(resource: .grey200).cgColor
+        }
+    }
 }
