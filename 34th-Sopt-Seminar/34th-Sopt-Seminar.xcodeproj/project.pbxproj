@@ -68,6 +68,7 @@
 		CA1E387C2BBB4748008D824E /* 34th-Sopt-Seminar */ = {
 			isa = PBXGroup;
 			children = (
+				CA1E388B2BBB4749008D824E /* Info.plist */,
 				CA1E38A62BBC766F008D824E /* Global */,
 				CA1E38A52BBC763C008D824E /* Application */,
 				CA1E38932BBB4A2B008D824E /* Week1 */,
@@ -136,7 +137,6 @@
 		CA1E38A72BBC7676008D824E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				CA1E388B2BBB4749008D824E /* Info.plist */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
