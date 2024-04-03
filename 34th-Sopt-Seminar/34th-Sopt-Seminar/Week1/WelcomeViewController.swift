@@ -9,23 +9,22 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
-    static let width = UIScreen.main.bounds.width / 375
-    static let height = UIScreen.main.bounds.height / 812
+    // MARK: - UI Properties
     
     private let rabbitImage: UIImageView = {
-        let img = UIImageView(frame: CGRect(x: width * 112, 
-                                            y: height * 87,
-                                            width: width * 150,
-                                            height: height * 150))
+        let img = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 112,
+                                            y: UIScreen.main.bounds.height / 812 * 87,
+                                            width: UIScreen.main.bounds.width / 375 * 150,
+                                            height: UIScreen.main.bounds.height / 812 * 150))
         img.image = UIImage(resource: .danggeun)
         return img
     }()
     
     private let welcomeLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: width * 140, 
-                                          y: height * 295,
-                                          width: width * 105,
-                                          height: 60))
+        let label = UILabel(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 140,
+                                          y: UIScreen.main.bounds.height / 812 * 295,
+                                          width: UIScreen.main.bounds.width / 375 * 105,
+                                          height: UIScreen.main.bounds.height / 812 * 60))
         label.textColor = UIColor(resource: .black)
         label.numberOfLines = 2
         label.textAlignment = .center
@@ -62,27 +61,40 @@ class WelcomeViewController: UIViewController {
         return button
     }()
     
+    // MARK: - Properties
     
     var id: String?
-
+    
+    // MARK: - Life Cycles
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .white
-        
-        [rabbitImage, welcomeLabel, mainButton, reloginButton].forEach {
-            self.view.addSubview($0)
-        }
+        setLayout()
+        setStyle()
         bingID()
+    }
+}
+
+
+// MARK: - Private Methods
+
+private extension WelcomeViewController {
+    
+    private func setLayout() {
+        self.view.addSubviews(rabbitImage,
+                              welcomeLabel,
+                              mainButton,
+                              reloginButton)
+    }
+    
+    private func setStyle() {
+        self.view.backgroundColor = .white
     }
     
     private func bingID() {
         guard let idText = id else {return}
         self.welcomeLabel.text = "\(idText)님\n반가워요!"
-
-//        if idText = id {
-//            self. welcomeLabel.text = "\(idText)님\n반가워요!"
-//        }
     }
     
     @objc

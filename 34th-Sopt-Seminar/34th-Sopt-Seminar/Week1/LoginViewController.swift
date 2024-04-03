@@ -9,14 +9,13 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    static let width = UIScreen.main.bounds.width / 375
-    static let height = UIScreen.main.bounds.height / 812
+    // MARK: - UI Properties
 
     private let titleLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: width * 69, 
-                                          y: height * 161,
-                                          width: width * 236,
-                                          height: height * 44))
+        let label = UILabel(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 69,
+                                          y: UIScreen.main.bounds.height / 812 * 161,
+                                          width: UIScreen.main.bounds.width / 375 * 236,
+                                          height: UIScreen.main.bounds.height / 812 * 44))
         label.text = "동네라서 가능한 모든것\n당근에서 가까운 이웃과 함께해요."
         label.textColor = UIColor(resource: .black)
         label.textAlignment = .center
@@ -30,7 +29,7 @@ class LoginViewController: UIViewController {
                                                   y: UIScreen.main.bounds.height / 812 * 276,
                                                   width: UIScreen.main.bounds.width / 375 * 335,
                                                   height: UIScreen.main.bounds.height / 812 * 52))
-        textField.setPlaceholder(placeholder: "아이디",
+        textField.setPlaceholder(placeholder: "아이디", 
                                  fontColor: UIColor(resource: .grey300),
                                  font: UIFont.pretendard(.subhead4))
         textField.setTextField(forBackgroundColor: UIColor(resource: .grey200),
@@ -104,23 +103,52 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+    // MARK: - Life Cycles
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .white
         setLayout()
+        setStyle()
         setDelegate()
     }
+        
+}
 
-    private func setLayout() {
+
+// MARK: - Private Methods
+
+private extension LoginViewController {
+    
+    func setLayout() {
         [titleLabel, idTextField, passwordTextField, loginButton].forEach {
             self.view.addSubview($0)
         }
     }
     
-    private func setDelegate() {
+    func setStyle() {
+        self.view.backgroundColor = .white
+    }
+    
+    func setDelegate() {
         self.idTextField.delegate = self
         self.passwordTextField.delegate = self
+    }
+    
+    func presentToWelcomeVC() {
+        self.idTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+        
+        let welcomeVC = WelcomeViewController()
+        welcomeVC.modalPresentationStyle = .formSheet
+        welcomeVC.modalTransitionStyle = .flipHorizontal
+        welcomeVC.id = self.idTextField.text ?? ""
+        self.present(welcomeVC, animated: true)
+    }
+    
+    func pushToWelcomeVC() {
+        let welcomeVC = WelcomeViewController()
+        self.navigationController?.pushViewController(welcomeVC, animated: true)
     }
     
     @objc
@@ -129,7 +157,8 @@ class LoginViewController: UIViewController {
 //        pushToWelcomeVC()
     }
     
-    @objc private func textFieldChange() {
+    @objc
+    func textFieldChange() {
         let id = self.idTextField.text ?? ""
         let pw = self.passwordTextField.text ?? ""
         
@@ -146,23 +175,6 @@ class LoginViewController: UIViewController {
             loginButton.backgroundColor = UIColor(resource: .grey200)
             loginButton.isEnabled = false
         }
-        print("\(id), \(pw)")
-    }
-    
-    private func presentToWelcomeVC() {
-        self.idTextField.resignFirstResponder()
-        self.passwordTextField.resignFirstResponder()
-        
-        let welcomeVC = WelcomeViewController()
-        welcomeVC.modalPresentationStyle = .formSheet
-        welcomeVC.modalTransitionStyle = .flipHorizontal
-        welcomeVC.id = self.idTextField.text ?? ""
-        self.present(welcomeVC, animated: true)
-    }
-    
-    private func pushToWelcomeVC() {
-        let welcomeVC = WelcomeViewController()
-        self.navigationController?.pushViewController(welcomeVC, animated: true)
     }
     
     @objc
@@ -173,9 +185,13 @@ class LoginViewController: UIViewController {
     @objc
     func clearButtonTapped() {
         self.idTextField.text = ""
+        clearButton.isHidden = true
     }
-    
+
 }
+
+
+// MARK: - Delegates
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing (_ textField: UITextField) {
