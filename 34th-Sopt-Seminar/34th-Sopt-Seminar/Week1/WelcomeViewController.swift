@@ -43,6 +43,7 @@ class WelcomeViewController: UIViewController {
         button.layer.cornerRadius = 6
         button.setTitle("메인으로", for: .normal)
         button.setTitleColor(UIColor(resource: .white), for: .normal)
+        button.addTarget(self, action: #selector(backToLoginButtonDidTap), for: .touchUpInside)
         button.titleLabel?.font = UIFont.pretendard(.subhead1)
         return button
     }()

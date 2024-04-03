@@ -39,6 +39,12 @@ class LoginViewController: UIViewController {
                                forCornerRadius: 3)
         textField.setLeftPadding(amount: 23)
         textField.addTarget(self, action: #selector(textFieldChange), for: .editingChanged)
+        
+        let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
+        rightView.addSubview(clearButton)
+        textField.rightView = rightView
+        textField.rightViewMode = .always
+
         return textField
     }()
 
@@ -57,7 +63,30 @@ class LoginViewController: UIViewController {
         textField.setLeftPadding(amount: 23)
         textField.addTarget(self, action: #selector(textFieldChange), for: .editingChanged)
         textField.isSecureTextEntry = true
+        
+        let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
+        rightView.addSubview(maskButton)
+        textField.rightView = rightView
+        textField.rightViewMode = .always
+        
         return textField
+    }()
+    
+    private lazy var maskButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        button.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+        button.tintColor = UIColor(resource: .grey300)
+        button.addTarget(self, action: #selector(maskButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var clearButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        button.isHidden = true
+        button.setImage(UIImage(systemName: "multiply.circle.fill"), for: .normal)
+        button.tintColor = UIColor(resource: .grey300)
+        button.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
+        return button
     }()
     
     private lazy var loginButton: UIButton = {
@@ -104,6 +133,12 @@ class LoginViewController: UIViewController {
         let id = self.idTextField.text ?? ""
         let pw = self.passwordTextField.text ?? ""
         
+        if !id.isEmpty {
+            clearButton.isHidden = false
+        } else {
+            clearButton.isHidden = true
+        }
+        
         if !id.isEmpty && !pw.isEmpty {
             loginButton.backgroundColor = UIColor(resource: .primaryOrange)
             loginButton.isEnabled = true
@@ -115,6 +150,9 @@ class LoginViewController: UIViewController {
     }
     
     private func presentToWelcomeVC() {
+        self.idTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+        
         let welcomeVC = WelcomeViewController()
         welcomeVC.modalPresentationStyle = .formSheet
         welcomeVC.modalTransitionStyle = .flipHorizontal
@@ -127,6 +165,15 @@ class LoginViewController: UIViewController {
         self.navigationController?.pushViewController(welcomeVC, animated: true)
     }
     
+    @objc
+    func maskButtonTapped() {
+        self.passwordTextField.isSecureTextEntry = !self.passwordTextField.isSecureTextEntry
+    }
+    
+    @objc
+    func clearButtonTapped() {
+        self.idTextField.text = ""
+    }
     
 }
 
