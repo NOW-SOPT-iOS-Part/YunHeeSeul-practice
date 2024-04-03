@@ -13,18 +13,18 @@ class WelcomeViewController: UIViewController {
     
     private let rabbitImage: UIImageView = {
         let img = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 112,
-                                            y: UIScreen.main.bounds.height / 812 * 87,
-                                            width: UIScreen.main.bounds.width / 375 * 150,
-                                            height: UIScreen.main.bounds.height / 812 * 150))
+                                                            y: UIScreen.main.bounds.height / 812 * 87,
+                                                            width: UIScreen.main.bounds.width / 375 * 150,
+                                                            height: UIScreen.main.bounds.height / 812 * 150))
         img.image = UIImage(resource: .danggeun)
         return img
     }()
     
-    private let welcomeLabel: UILabel = {
+    let welcomeLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 140,
-                                          y: UIScreen.main.bounds.height / 812 * 295,
-                                          width: UIScreen.main.bounds.width / 375 * 105,
-                                          height: UIScreen.main.bounds.height / 812 * 60))
+                                                       y: UIScreen.main.bounds.height / 812 * 295,
+                                                       width: UIScreen.main.bounds.width / 375 * 105,
+                                                       height: UIScreen.main.bounds.height / 812 * 60))
         label.textColor = UIColor(resource: .black)
         label.numberOfLines = 2
         label.textAlignment = .center
@@ -35,9 +35,9 @@ class WelcomeViewController: UIViewController {
     
     private lazy var mainButton: UIButton = {
         let button = UIButton(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 20,
-                                            y: UIScreen.main.bounds.height / 812 * 426,
-                                            width: UIScreen.main.bounds.width / 375 * 335,
-                                            height: UIScreen.main.bounds.height / 812 * 58))
+                                                          y: UIScreen.main.bounds.height / 812 * 426,
+                                                          width: UIScreen.main.bounds.width / 375 * 335,
+                                                          height: UIScreen.main.bounds.height / 812 * 58))
         button.backgroundColor = UIColor(resource: .primaryOrange)
         button.layer.cornerRadius = 6
         button.setTitle("메인으로", for: .normal)
@@ -47,11 +47,11 @@ class WelcomeViewController: UIViewController {
         return button
     }()
     
-    private lazy var reloginButton: UIButton = {
+    lazy var reloginButton: UIButton = {
         let button = UIButton(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 20,
-                                            y: UIScreen.main.bounds.height / 812 * 498,
-                                            width: UIScreen.main.bounds.width / 375 * 335,
-                                            height: UIScreen.main.bounds.height / 812 * 58))
+                                                          y: UIScreen.main.bounds.height / 812 * 498,
+                                                          width: UIScreen.main.bounds.width / 375 * 335,
+                                                          height: UIScreen.main.bounds.height / 812 * 58))
         button.backgroundColor = UIColor(resource: .grey200)
         button.setTitle("다시 로그인", for: .normal)
         button.setTitleColor(UIColor(resource: .grey300), for: .normal)
@@ -81,29 +81,29 @@ class WelcomeViewController: UIViewController {
 
 private extension WelcomeViewController {
     
-    private func setLayout() {
+    func setLayout() {
         self.view.addSubviews(rabbitImage,
                               welcomeLabel,
                               mainButton,
                               reloginButton)
     }
     
-    private func setStyle() {
+    func setStyle() {
         self.view.backgroundColor = .white
     }
     
-    private func bingID() {
+    func bingID() {
         guard let idText = id else {return}
         self.welcomeLabel.text = "\(idText)님\n반가워요!"
     }
     
     @objc
-    private func backToLoginButtonDidTap() {
+    func backToLoginButtonDidTap() {
         if self.navigationController == nil {
             self.dismiss(animated: true)
         } else {
             self.navigationController?.popViewController(animated: true)
         }
     }
-
+    
 }
