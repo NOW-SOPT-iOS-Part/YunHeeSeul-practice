@@ -19,6 +19,7 @@
 		CA1E389D2BBC6914008D824E /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA1E389C2BBC6914008D824E /* Pretendard-SemiBold.otf */; };
 		CA1E389F2BBC6AB7008D824E /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1E389E2BBC6AB7008D824E /* UIFont+.swift */; };
 		CA1E38A12BBC6DFE008D824E /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1E38A02BBC6DFE008D824E /* UITextField+.swift */; };
+		CA3952AC2BBDCA2700B15E91 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3952AB2BBDCA2700B15E91 /* UIView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		CA1E389C2BBC6914008D824E /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		CA1E389E2BBC6AB7008D824E /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		CA1E38A02BBC6DFE008D824E /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		CA3952AB2BBDCA2700B15E91 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				CA1E389E2BBC6AB7008D824E /* UIFont+.swift */,
 				CA1E38A02BBC6DFE008D824E /* UITextField+.swift */,
+				CA3952AB2BBDCA2700B15E91 /* UIView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			files = (
 				CA1E38A12BBC6DFE008D824E /* UITextField+.swift in Sources */,
 				CA1E38922BBB4A27008D824E /* WelcomeViewController.swift in Sources */,
+				CA3952AC2BBDCA2700B15E91 /* UIView+.swift in Sources */,
 				CA1E387E2BBB4748008D824E /* AppDelegate.swift in Sources */,
 				CA1E38952BBB4A3B008D824E /* LoginViewController.swift in Sources */,
 				CA1E389F2BBC6AB7008D824E /* UIFont+.swift in Sources */,
