@@ -9,14 +9,23 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
+    static let width = UIScreen.main.bounds.width / 375
+    static let height = UIScreen.main.bounds.height / 812
+    
     private let rabbitImage: UIImageView = {
-        let img = UIImageView(frame: CGRect(x: 112, y: 87, width: 150, height: 150))
+        let img = UIImageView(frame: CGRect(x: width * 112, 
+                                            y: height * 87,
+                                            width: width * 150,
+                                            height: height * 150))
         img.image = UIImage(resource: .danggeun)
         return img
     }()
     
     private let welcomeLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 140, y: 295, width: 105, height: 60))
+        let label = UILabel(frame: CGRect(x: width * 140, 
+                                          y: height * 295,
+                                          width: width * 105,
+                                          height: 60))
         label.textColor = UIColor(resource: .black)
         label.numberOfLines = 2
         label.textAlignment = .center
@@ -26,7 +35,10 @@ class WelcomeViewController: UIViewController {
     }()
     
     private lazy var mainButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 20, y: 426, width: 335, height: 58))
+        let button = UIButton(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 20,
+                                            y: UIScreen.main.bounds.height / 812 * 426,
+                                            width: UIScreen.main.bounds.width / 375 * 335,
+                                            height: UIScreen.main.bounds.height / 812 * 58))
         button.backgroundColor = UIColor(resource: .primaryOrange)
         button.layer.cornerRadius = 6
         button.setTitle("메인으로", for: .normal)
@@ -36,7 +48,10 @@ class WelcomeViewController: UIViewController {
     }()
     
     private lazy var reloginButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 20, y: 498, width: 335, height: 58))
+        let button = UIButton(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 20,
+                                            y: UIScreen.main.bounds.height / 812 * 498,
+                                            width: UIScreen.main.bounds.width / 375 * 335,
+                                            height: UIScreen.main.bounds.height / 812 * 58))
         button.backgroundColor = UIColor(resource: .grey200)
         button.setTitle("다시 로그인", for: .normal)
         button.setTitleColor(UIColor(resource: .grey300), for: .normal)

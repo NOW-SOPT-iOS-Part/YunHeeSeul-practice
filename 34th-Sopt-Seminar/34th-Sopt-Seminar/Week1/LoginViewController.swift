@@ -9,8 +9,14 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    static let width = UIScreen.main.bounds.width / 375
+    static let height = UIScreen.main.bounds.height / 812
+
     private let titleLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 69, y: 161, width: 236, height: 44))
+        let label = UILabel(frame: CGRect(x: width * 69, 
+                                          y: height * 161,
+                                          width: width * 236,
+                                          height: height * 44))
         label.text = "동네라서 가능한 모든것\n당근에서 가까운 이웃과 함께해요."
         label.textColor = UIColor(resource: .black)
         label.textAlignment = .center
@@ -19,8 +25,11 @@ class LoginViewController: UIViewController {
         return label
     }()
 
-    private let idTextField: UITextField = {
-        let textField = UITextField(frame: CGRect(x: 20, y: 276, width: 335, height: 52))
+    private lazy var idTextField: UITextField = {
+        let textField = UITextField(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 20,
+                                                  y: UIScreen.main.bounds.height / 812 * 276,
+                                                  width: UIScreen.main.bounds.width / 375 * 335,
+                                                  height: UIScreen.main.bounds.height / 812 * 52))
         textField.setPlaceholder(placeholder: "아이디",
                                  fontColor: UIColor(resource: .grey300),
                                  font: UIFont.pretendard(.subhead4))
@@ -29,11 +38,15 @@ class LoginViewController: UIViewController {
                                forBorderWidth: 0,
                                forCornerRadius: 3)
         textField.setLeftPadding(amount: 23)
+        textField.addTarget(self, action: #selector(textFieldChange), for: .editingChanged)
         return textField
     }()
 
-    private let passwordTextField: UITextField = {
-        let textField = UITextField(frame: CGRect(x: 20, y: 335, width: 335, height: 52))
+    private lazy var passwordTextField: UITextField = {
+        let textField = UITextField(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 20,
+                                                  y: UIScreen.main.bounds.height / 812 * 335,
+                                                  width: UIScreen.main.bounds.width / 375 * 335,
+                                                  height: UIScreen.main.bounds.height / 812 * 52))
         textField.setPlaceholder(placeholder: "비밀번호",
                                  fontColor: UIColor(resource: .grey300),
                                  font: UIFont.pretendard(.subhead4))
@@ -42,18 +55,23 @@ class LoginViewController: UIViewController {
                                forBorderWidth: 0,
                                forCornerRadius: 3)
         textField.setLeftPadding(amount: 23)
+        textField.addTarget(self, action: #selector(textFieldChange), for: .editingChanged)
         textField.isSecureTextEntry = true
         return textField
     }()
     
     private lazy var loginButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 21, y: 422, width: 332, height: 58))
-        button.backgroundColor = UIColor(resource: .primaryOrange)
+        let button = UIButton(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 21, 
+                                            y: UIScreen.main.bounds.height / 812 * 422,
+                                            width: UIScreen.main.bounds.width / 375 * 332,
+                                            height: UIScreen.main.bounds.height / 812 * 58))
+        button.backgroundColor = UIColor(resource: .grey200)
         button.setTitle("로그인하기", for: .normal)
         button.setTitleColor(UIColor(resource: .white), for: .normal)
         button.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
         button.titleLabel?.font = UIFont.pretendard(.subhead1)
         button.layer.cornerRadius = 6
+        button.isEnabled = false
         return button
     }()
     
@@ -82,6 +100,20 @@ class LoginViewController: UIViewController {
 //        pushToWelcomeVC()
     }
     
+    @objc private func textFieldChange() {
+        let id = self.idTextField.text ?? ""
+        let pw = self.passwordTextField.text ?? ""
+        
+        if !id.isEmpty && !pw.isEmpty {
+            loginButton.backgroundColor = UIColor(resource: .primaryOrange)
+            loginButton.isEnabled = true
+        } else {
+            loginButton.backgroundColor = UIColor(resource: .grey200)
+            loginButton.isEnabled = false
+        }
+        print("\(id), \(pw)")
+    }
+    
     private func presentToWelcomeVC() {
         let welcomeVC = WelcomeViewController()
         welcomeVC.modalPresentationStyle = .formSheet
@@ -108,7 +140,7 @@ extension LoginViewController: UITextFieldDelegate {
             self.passwordTextField.layer.borderWidth = 2
             self.passwordTextField.layer.borderColor = UIColor(resource: .grey500).cgColor
         }
-
+        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
