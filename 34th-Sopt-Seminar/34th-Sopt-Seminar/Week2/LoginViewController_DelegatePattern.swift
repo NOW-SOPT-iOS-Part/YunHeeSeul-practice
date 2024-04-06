@@ -172,7 +172,8 @@ private extension LoginViewController_DelegatePattern {
         self.idTextField.resignFirstResponder()
         self.passwordTextField.resignFirstResponder()
         
-        let welcomeVC = WelcomeViewController()
+        let welcomeVC = WelcomeViewController_DelegatePattern()
+        welcomeVC.delegate = self
         welcomeVC.modalPresentationStyle = .formSheet
         welcomeVC.modalTransitionStyle = .flipHorizontal
         welcomeVC.id = self.idTextField.text ?? ""
@@ -191,7 +192,8 @@ private extension LoginViewController_DelegatePattern {
     }
     
     func pushToWelcomeVC() {
-        let welcomeVC = WelcomeViewController()
+        let welcomeVC = WelcomeViewController_DelegatePattern()
+        welcomeVC.delegate = self
         self.navigationController?.pushViewController(welcomeVC, animated: true)
     }
     
@@ -287,6 +289,14 @@ extension LoginViewController_DelegatePattern: UITextFieldDelegate {
         } else {
             self.passwordTextField.layer.borderWidth = 0
             self.passwordTextField.layer.borderColor = UIColor(resource: .grey200).cgColor
+        }
+    }
+}
+
+extension LoginViewController_DelegatePattern: DataBindProtocol {
+    func dataBind(id: String?) {
+        if let id = id {
+            idTextField.text = "\(id)는 뭘로 할꺼얌"
         }
     }
 }

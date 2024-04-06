@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol DataBindProtocol: AnyObject {
+    func dataBind(id: String?)
+}
+
 class WelcomeViewController_DelegatePattern: UIViewController {
     
     // MARK: - UI Properties
@@ -65,6 +69,8 @@ class WelcomeViewController_DelegatePattern: UIViewController {
     
     var id: String?
     
+    weak var delegate: DataBindProtocol?
+    
     // MARK: - Life Cycles
     
     override func viewDidLoad() {
@@ -99,6 +105,10 @@ private extension WelcomeViewController_DelegatePattern {
     
     @objc
     func backToLoginButtonDidTap() {
+        if let id  = id {
+            delegate?.dataBind(id: id)
+        }
+        
         if self.navigationController == nil {
             self.dismiss(animated: true)
         } else {
