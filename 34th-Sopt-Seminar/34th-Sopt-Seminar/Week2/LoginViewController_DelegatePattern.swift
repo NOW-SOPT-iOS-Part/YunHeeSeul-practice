@@ -7,15 +7,14 @@
 
 import UIKit
 
+import SnapKit
+
 class LoginViewController_DelegatePattern: UIViewController {
     
     // MARK: - UI Properties
-
+    
     private let titleLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 69,
-                                                       y: UIScreen.main.bounds.height / 812 * 161,
-                                                       width: UIScreen.main.bounds.width / 375 * 236,
-                                                       height: UIScreen.main.bounds.height / 812 * 44))
+        let label = UILabel()
         label.text = "동네라서 가능한 모든것\n당근에서 가까운 이웃과 함께해요."
         label.textColor = UIColor(resource: .black)
         label.textAlignment = .center
@@ -23,19 +22,16 @@ class LoginViewController_DelegatePattern: UIViewController {
         label.font = UIFont.pretendard(.subhead1)
         return label
     }()
-
+    
     private lazy var idTextField: UITextField = {
-        let textField = UITextField(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 20,
-                                                  y: UIScreen.main.bounds.height / 812 * 276,
-                                                  width: UIScreen.main.bounds.width / 375 * 335,
-                                                  height: UIScreen.main.bounds.height / 812 * 52))
+        let textField = UITextField()
         textField.setPlaceholder(placeholder: "아이디",
-                                         fontColor: UIColor(resource: .grey300),
-                                         font: UIFont.pretendard(.subhead4))
+                                 fontColor: UIColor(resource: .grey300),
+                                 font: UIFont.pretendard(.subhead4))
         textField.setTextField(forBackgroundColor: UIColor(resource: .grey200),
-                                       forBorderColor: UIColor(resource: .grey200),
-                                       forBorderWidth: 0,
-                                       forCornerRadius: 3)
+                               forBorderColor: UIColor(resource: .grey200),
+                               forBorderWidth: 0,
+                               forCornerRadius: 3)
         textField.setLeftPadding(amount: 23)
         textField.addTarget(self, action: #selector(textFieldChange), for: .editingChanged)
         
@@ -43,22 +39,19 @@ class LoginViewController_DelegatePattern: UIViewController {
         rightView.addSubview(clearButton)
         textField.rightView = rightView
         textField.rightViewMode = .always
-
+        
         return textField
     }()
-
+    
     private lazy var passwordTextField: UITextField = {
-        let textField = UITextField(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 20,
-                                                                 y: UIScreen.main.bounds.height / 812 * 335,
-                                                                 width: UIScreen.main.bounds.width / 375 * 335,
-                                                                 height: UIScreen.main.bounds.height / 812 * 52))
+        let textField = UITextField()
         textField.setPlaceholder(placeholder: "비밀번호",
-                                          fontColor: UIColor(resource: .grey300),
-                                          font: UIFont.pretendard(.subhead4))
+                                 fontColor: UIColor(resource: .grey300),
+                                 font: UIFont.pretendard(.subhead4))
         textField.setTextField(forBackgroundColor: UIColor(resource: .grey200),
-                                      forBorderColor: UIColor(resource: .grey200),
-                                      forBorderWidth: 0,
-                                      forCornerRadius: 3)
+                               forBorderColor: UIColor(resource: .grey200),
+                               forBorderWidth: 0,
+                               forCornerRadius: 3)
         textField.setLeftPadding(amount: 23)
         textField.addTarget(self, action: #selector(textFieldChange), for: .editingChanged)
         textField.isSecureTextEntry = true
@@ -72,7 +65,7 @@ class LoginViewController_DelegatePattern: UIViewController {
     }()
     
     private lazy var maskButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        let button = UIButton()
         button.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
         button.tintColor = UIColor(resource: .grey300)
         button.addTarget(self, action: #selector(maskButtonTapped), for: .touchUpInside)
@@ -80,7 +73,7 @@ class LoginViewController_DelegatePattern: UIViewController {
     }()
     
     private lazy var clearButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        let button = UIButton()
         button.isHidden = true
         button.setImage(UIImage(systemName: "multiply.circle.fill"), for: .normal)
         button.tintColor = UIColor(resource: .grey300)
@@ -89,10 +82,7 @@ class LoginViewController_DelegatePattern: UIViewController {
     }()
     
     private lazy var loginButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 21,
-                                                          y: UIScreen.main.bounds.height / 812 * 422,
-                                                          width: UIScreen.main.bounds.width / 375 * 332,
-                                                          height: UIScreen.main.bounds.height / 812 * 58))
+        let button = UIButton()
         button.backgroundColor = UIColor(resource: .grey200)
         button.setTitle("로그인하기", for: .normal)
         button.setTitleColor(UIColor(resource: .white), for: .normal)
@@ -104,10 +94,7 @@ class LoginViewController_DelegatePattern: UIViewController {
     }()
     
     private let modeLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 142,
-                                                       y: UIScreen.main.bounds.height / 812 * 97,
-                                                       width: UIScreen.main.bounds.width / 375 * 60,
-                                                       height: UIScreen.main.bounds.height / 812 * 30))
+        let label = UILabel()
         label.text = "mode"
         label.textColor = UIColor(resource: .black)
         label.textAlignment = .center
@@ -117,32 +104,29 @@ class LoginViewController_DelegatePattern: UIViewController {
     }()
     
     private lazy var switchButton: UISwitch = {
-        let button = UISwitch(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 202,
-                                                          y: UIScreen.main.bounds.height / 812 * 97,
-                                                          width: UIScreen.main.bounds.width / 375 * 40,
-                                                          height: UIScreen.main.bounds.height / 812 * 30))
+        let button = UISwitch()
         button.onTintColor = UIColor(resource: .orange200)
         button.tintColor = UIColor(resource: .black)
         button.isOn = false
         button.addTarget(self, action: #selector(onClickSwitch), for: .valueChanged)
-
+        
         return button
     }()
     
     // MARK: - UI Properties
-
+    
     var isActivate: Bool = false
     
     // MARK: - Life Cycles
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setLayout()
         setStyle()
         setDelegate()
     }
-        
+    
 }
 
 
@@ -152,11 +136,66 @@ private extension LoginViewController_DelegatePattern {
     
     func setLayout() {
         self.view.addSubviews(titleLabel,
-                                        idTextField,
-                                        passwordTextField,
-                                        loginButton,
-                                        switchButton,
-                                        modeLabel)
+                              idTextField,
+                              passwordTextField,
+                              loginButton,
+                              switchButton,
+                              modeLabel)
+        
+        idTextField.addSubviews(clearButton)
+        passwordTextField.addSubviews(maskButton)
+        
+        modeLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(97)
+            $0.leading.equalToSuperview().inset(142)
+            $0.height.equalTo(30)
+            $0.width.equalTo(60)
+        }
+        
+        switchButton.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(97)
+            $0.leading.equalTo(modeLabel.snp.trailing).offset(10)
+            $0.height.equalTo(30)
+            $0.width.equalTo(40)
+        }
+        
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(modeLabel.snp.bottom).offset(70)
+            $0.width.equalTo(236)
+            $0.centerX.equalToSuperview()
+        }
+        
+        idTextField.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(70)
+            $0.width.equalTo(335)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(50)
+        }
+        
+        passwordTextField.snp.makeConstraints {
+            $0.top.equalTo(idTextField.snp.bottom).offset(7)
+            $0.width.equalTo(335)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(50)
+        }
+        
+        loginButton.snp.makeConstraints {
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(35)
+            $0.width.equalTo(335)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(60)
+        }
+        
+        maskButton.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(20)
+        }
+        
+        clearButton.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(20)
+        }
+        
     }
     
     func setStyle() {
@@ -200,7 +239,7 @@ private extension LoginViewController_DelegatePattern {
     @objc
     func loginButtonDidTap() {
         presentToWelcomeVC()
-//        pushToWelcomeVC()
+        //        pushToWelcomeVC()
     }
     
     @objc
@@ -249,20 +288,20 @@ private extension LoginViewController_DelegatePattern {
         self.maskButton.tintColor = switchButton.isOn ? UIColor(resource: .black) : UIColor(resource: .grey300)
         self.clearButton.tintColor = switchButton.isOn ? UIColor(resource: .black) : UIColor(resource: .grey300)
         self.idTextField.setPlaceholder(placeholder: "아이디",
-                                                        fontColor: switchButton.isOn ? UIColor(resource: .white) : UIColor(resource: .grey300),
-                                                        font: .pretendard(.subhead4))
+                                        fontColor: switchButton.isOn ? UIColor(resource: .white) : UIColor(resource: .grey300),
+                                        font: .pretendard(.subhead4))
         self.passwordTextField.setPlaceholder(placeholder: "비밀번호",
-                                                                 fontColor: switchButton.isOn ? UIColor(resource: .white) : UIColor(resource: .grey300),
-                                                                 font: .pretendard(.subhead4))
+                                              fontColor: switchButton.isOn ? UIColor(resource: .white) : UIColor(resource: .grey300),
+                                              font: .pretendard(.subhead4))
         
         if !isActivate {
             self.loginButton.backgroundColor = switchButton.isOn ? UIColor(resource: .orange200) : UIColor(resource: .grey200)
         } else {
             self.loginButton.backgroundColor = UIColor(resource: .primaryOrange)
         }
-
+        
     }
-
+    
 }
 
 

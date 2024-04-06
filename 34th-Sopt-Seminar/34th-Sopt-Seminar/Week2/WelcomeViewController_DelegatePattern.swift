@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+
 protocol DataBindProtocol: AnyObject {
     func dataBind(id: String?)
 }
@@ -16,19 +18,13 @@ class WelcomeViewController_DelegatePattern: UIViewController {
     // MARK: - UI Properties
     
     private let rabbitImage: UIImageView = {
-        let img = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 112,
-                                                            y: UIScreen.main.bounds.height / 812 * 87,
-                                                            width: UIScreen.main.bounds.width / 375 * 150,
-                                                            height: UIScreen.main.bounds.height / 812 * 150))
+        let img = UIImageView()
         img.image = UIImage(resource: .danggeun)
         return img
     }()
     
     let welcomeLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 140,
-                                                       y: UIScreen.main.bounds.height / 812 * 295,
-                                                       width: UIScreen.main.bounds.width / 375 * 105,
-                                                       height: UIScreen.main.bounds.height / 812 * 60))
+        let label = UILabel()
         label.textColor = UIColor(resource: .black)
         label.numberOfLines = 2
         label.textAlignment = .center
@@ -38,10 +34,7 @@ class WelcomeViewController_DelegatePattern: UIViewController {
     }()
     
     private lazy var mainButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 20,
-                                                          y: UIScreen.main.bounds.height / 812 * 426,
-                                                          width: UIScreen.main.bounds.width / 375 * 335,
-                                                          height: UIScreen.main.bounds.height / 812 * 58))
+        let button = UIButton()
         button.backgroundColor = UIColor(resource: .primaryOrange)
         button.layer.cornerRadius = 6
         button.setTitle("메인으로", for: .normal)
@@ -52,10 +45,7 @@ class WelcomeViewController_DelegatePattern: UIViewController {
     }()
     
     lazy var reloginButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: UIScreen.main.bounds.width / 375 * 20,
-                                                          y: UIScreen.main.bounds.height / 812 * 498,
-                                                          width: UIScreen.main.bounds.width / 375 * 335,
-                                                          height: UIScreen.main.bounds.height / 812 * 58))
+        let button = UIButton()
         button.backgroundColor = UIColor(resource: .grey200)
         button.setTitle("다시 로그인", for: .normal)
         button.setTitleColor(UIColor(resource: .grey300), for: .normal)
@@ -92,6 +82,32 @@ private extension WelcomeViewController_DelegatePattern {
                               welcomeLabel,
                               mainButton,
                               reloginButton)
+        
+        rabbitImage.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(70)
+            $0.centerX.equalToSuperview()
+            $0.size.equalTo(150)
+        }
+        
+        welcomeLabel.snp.makeConstraints {
+            $0.top.equalTo(rabbitImage.snp.bottom).offset(58)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(150)
+        }
+        
+        mainButton.snp.makeConstraints {
+            $0.top.equalTo(welcomeLabel.snp.bottom).offset(71)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(335)
+            $0.height.equalTo(60)
+        }
+        
+        reloginButton.snp.makeConstraints {
+            $0.top.equalTo(mainButton.snp.bottom).offset(14)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(335)
+            $0.height.equalTo(60)
+        }
     }
     
     func setStyle() {
