@@ -24,6 +24,7 @@
 		CA3952B12BC1148600B15E91 /* WelcomeViewController_DelegatePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3952B02BC1148600B15E91 /* WelcomeViewController_DelegatePattern.swift */; };
 		CA3952B42BC1274000B15E91 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CA3952B32BC1274000B15E91 /* SnapKit */; };
 		CA3952B62BC1274000B15E91 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CA3952B52BC1274000B15E91 /* SnapKit-Dynamic */; };
+		CA3952B82BC1317700B15E91 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3952B72BC1317700B15E91 /* ScrollViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		CA3952AB2BBDCA2700B15E91 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		CA3952AE2BC1147800B15E91 /* LoginViewController_DelegatePattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController_DelegatePattern.swift; sourceTree = "<group>"; };
 		CA3952B02BC1148600B15E91 /* WelcomeViewController_DelegatePattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController_DelegatePattern.swift; sourceTree = "<group>"; };
+		CA3952B72BC1317700B15E91 /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 			children = (
 				CA3952AE2BC1147800B15E91 /* LoginViewController_DelegatePattern.swift */,
 				CA3952B02BC1148600B15E91 /* WelcomeViewController_DelegatePattern.swift */,
+				CA3952B72BC1317700B15E91 /* ScrollViewController.swift */,
 			);
 			path = Week2;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				CA3952AF2BC1147800B15E91 /* LoginViewController_DelegatePattern.swift in Sources */,
 				CA1E38952BBB4A3B008D824E /* LoginViewController.swift in Sources */,
 				CA1E389F2BBC6AB7008D824E /* UIFont+.swift in Sources */,
+				CA3952B82BC1317700B15E91 /* ScrollViewController.swift in Sources */,
 				CA1E38802BBB4748008D824E /* SceneDelegate.swift in Sources */,
 				CA3952B12BC1148600B15E91 /* WelcomeViewController_DelegatePattern.swift in Sources */,
 			);
