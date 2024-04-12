@@ -14,6 +14,7 @@ class ScrollViewController: UIViewController {
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = UIColor(resource: .grey200)
+        scrollView.contentInsetAdjustmentBehavior = .never
         return scrollView
     }()
     
