@@ -24,6 +24,10 @@
 		CA1F68DE2BD389B000439E33 /* LoginViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F68DD2BD389B000439E33 /* LoginViewViewController.swift */; };
 		CA1F68E02BD38D6600439E33 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F68DF2BD38D6600439E33 /* ChatViewController.swift */; };
 		CA1F68E32BD38D9700439E33 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F68E22BD38D9700439E33 /* ChatTableViewCell.swift */; };
+		CA1F68E62BD39CA300439E33 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F68E52BD39CA300439E33 /* ChatModel.swift */; };
+		CA1F68E82BD3A6C200439E33 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F68E72BD3A6C200439E33 /* ItemViewController.swift */; };
+		CA1F68EA2BD3A74900439E33 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F68E92BD3A74900439E33 /* ItemCollectionViewCell.swift */; };
+		CA1F68EC2BD3AA0800439E33 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F68EB2BD3AA0800439E33 /* ItemModel.swift */; };
 		CA3952AC2BBDCA2700B15E91 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3952AB2BBDCA2700B15E91 /* UIView+.swift */; };
 		CA3952AF2BC1147800B15E91 /* LoginViewController_DelegatePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3952AE2BC1147800B15E91 /* LoginViewController_DelegatePattern.swift */; };
 		CA3952B12BC1148600B15E91 /* WelcomeViewController_DelegatePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3952B02BC1148600B15E91 /* WelcomeViewController_DelegatePattern.swift */; };
@@ -51,6 +55,10 @@
 		CA1F68DD2BD389B000439E33 /* LoginViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewController.swift; sourceTree = "<group>"; };
 		CA1F68DF2BD38D6600439E33 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		CA1F68E22BD38D9700439E33 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		CA1F68E52BD39CA300439E33 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		CA1F68E72BD3A6C200439E33 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		CA1F68E92BD3A74900439E33 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		CA1F68EB2BD3AA0800439E33 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		CA3952AB2BBDCA2700B15E91 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		CA3952AE2BC1147800B15E91 /* LoginViewController_DelegatePattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController_DelegatePattern.swift; sourceTree = "<group>"; };
 		CA3952B02BC1148600B15E91 /* WelcomeViewController_DelegatePattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController_DelegatePattern.swift; sourceTree = "<group>"; };
@@ -179,6 +187,7 @@
 			children = (
 				CA1F68DD2BD389B000439E33 /* LoginViewViewController.swift */,
 				CA1F68DF2BD38D6600439E33 /* ChatViewController.swift */,
+				CA1F68E72BD3A6C200439E33 /* ItemViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -187,8 +196,18 @@
 			isa = PBXGroup;
 			children = (
 				CA1F68E22BD38D9700439E33 /* ChatTableViewCell.swift */,
+				CA1F68E92BD3A74900439E33 /* ItemCollectionViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		CA1F68E42BD39C4000439E33 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CA1F68E52BD39CA300439E33 /* ChatModel.swift */,
+				CA1F68EB2BD3AA0800439E33 /* ItemModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		CA3952AD2BC1144700B15E91 /* Week2 */ = {
@@ -204,6 +223,7 @@
 		CA39531A2BC5181000B15E91 /* Week3 */ = {
 			isa = PBXGroup;
 			children = (
+				CA1F68E42BD39C4000439E33 /* Models */,
 				CA1F68E12BD38D8300439E33 /* Cells */,
 				CA1F68DC2BD3899E00439E33 /* ViewControllers */,
 				CA1F68D62BD3877400439E33 /* Views */,
@@ -295,14 +315,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA1E38A12BBC6DFE008D824E /* UITextField+.swift in Sources */,
+				CA1F68E82BD3A6C200439E33 /* ItemViewController.swift in Sources */,
 				CA1E38922BBB4A27008D824E /* WelcomeViewController.swift in Sources */,
 				CA3952AC2BBDCA2700B15E91 /* UIView+.swift in Sources */,
 				CA1E387E2BBB4748008D824E /* AppDelegate.swift in Sources */,
 				CA3952AF2BC1147800B15E91 /* LoginViewController_DelegatePattern.swift in Sources */,
+				CA1F68E62BD39CA300439E33 /* ChatModel.swift in Sources */,
+				CA1F68EA2BD3A74900439E33 /* ItemCollectionViewCell.swift in Sources */,
 				CA1E38952BBB4A3B008D824E /* LoginViewController.swift in Sources */,
 				CA1E389F2BBC6AB7008D824E /* UIFont+.swift in Sources */,
 				CA3952B82BC1317700B15E91 /* ScrollViewController.swift in Sources */,
 				CA1F68D82BD3878600439E33 /* LoginView.swift in Sources */,
+				CA1F68EC2BD3AA0800439E33 /* ItemModel.swift in Sources */,
 				CA1F68E02BD38D6600439E33 /* ChatViewController.swift in Sources */,
 				CA1E38802BBB4748008D824E /* SceneDelegate.swift in Sources */,
 				CA1F68E32BD38D9700439E33 /* ChatTableViewCell.swift in Sources */,

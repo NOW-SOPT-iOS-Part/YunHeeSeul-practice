@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ant-design_heart-outlined.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

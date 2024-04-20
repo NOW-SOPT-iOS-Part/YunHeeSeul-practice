@@ -9,11 +9,14 @@ import UIKit
 
 class ChatViewController: UIViewController {
 
-    private let tableView = UITableView(frame: .zero, style: .plain) // -- 2번
+    private let tableView = UITableView(frame: .zero, style: .plain)
+    
+    private let chatList = ChatModel.dummy()
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.isHidden = true
         setLayout()
         setDelegate()
         register()
@@ -28,16 +31,14 @@ class ChatViewController: UIViewController {
     }
     
     private func register() {
-        tableView.register(
-            ChatTableViewCell.self,
-            forCellReuseIdentifier: ChatTableViewCell.identifier
+        tableView.register(ChatTableViewCell.self, forCellReuseIdentifier: ChatTableViewCell.identifier
         )
     }
     
     private func setDelegate() {
-            tableView.delegate = self
-            tableView.dataSource = self
-        }
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
 
 }
 
@@ -55,6 +56,7 @@ extension ChatViewController: UITableViewDataSource {
       guard let cell = tableView.dequeueReusableCell(
                   withIdentifier: ChatTableViewCell.identifier,
                   for: indexPath) as? ChatTableViewCell else { return UITableViewCell() }
+        cell.dataBind(chatList[indexPath.row])
         return cell
     } 
 }

@@ -27,13 +27,13 @@ class ChatTableViewCell: UITableViewCell {
     
     private let profileImageView: UIImageView = {
       let imgView = UIImageView()
-        imgView.layer.borderWidth = 0.5
-        imgView.layer.cornerRadius = 20
-        imgView.layer.borderColor = UIColor(resource: .grey400).cgColor
-        imgView.contentMode = .scaleAspectFill
-        imgView.clipsToBounds = true
-        imgView.image = UIImage(resource: .cat1)
-        return imgView
+    imgView.layer.borderWidth = 0.5
+    imgView.layer.cornerRadius = 20
+    imgView.layer.borderColor = UIColor(resource: .grey400).cgColor
+    imgView.contentMode = .scaleAspectFill
+    imgView.clipsToBounds = true
+    imgView.image = UIImage(resource: .cat1)
+    return imgView
     }()
     
     private let nicknameLabel: UILabel = {
@@ -113,4 +113,14 @@ class ChatTableViewCell: UITableViewCell {
         }
     }
     
+}
+
+extension ChatTableViewCell {
+    func dataBind(_ chatData: ChatModel) {
+        profileImageView.image = chatData.profileImg
+        nicknameLabel.text = chatData.name
+        locationLabel.text = chatData.place
+        titleLabel.text = chatData.message
+        subImageView.image = chatData.itemImg
+    }
 }
