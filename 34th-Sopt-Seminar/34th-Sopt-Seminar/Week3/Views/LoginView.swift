@@ -105,14 +105,14 @@ final class LoginView: UIView {
     
     // MARK: - UI Properties
     
-    var isActivate: Bool = false
-    
     weak var delegate: LoginViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setLayout()
+        setStyle()
+        setDelegate()
     }
     
     required init?(coder: NSCoder) {
@@ -193,7 +193,7 @@ private extension LoginView {
     }
     
     func setStyle() {
-        self.backgroundColor = .white
+        self.backgroundColor = UIColor(resource: .white)
     }
     
     func setDelegate() {
@@ -212,62 +212,22 @@ private extension LoginView {
     
     @objc
     func textFieldChange() {
-        let id = self.idTextField.text ?? ""
-        let pw = self.passwordTextField.text ?? ""
-        
-        if !id.isEmpty {
-            clearButton.isHidden = false
-        } else {
-            clearButton.isHidden = true
-        }
-        
-        if !id.isEmpty && !pw.isEmpty {
-            loginButton.backgroundColor = UIColor(resource: .primaryOrange)
-            loginButton.isEnabled = true
-            isActivate = true
-        } else {
-            loginButton.backgroundColor = switchButton.isOn ? UIColor(resource: .orange200) : UIColor(resource: .grey200)
-            loginButton.isEnabled = false
-            isActivate = false
-        }
+        self.delegate?.textFieldChange()
     }
     
     @objc
     func maskButtonTapped() {
-        self.passwordTextField.isSecureTextEntry = !self.passwordTextField.isSecureTextEntry
+        self.delegate?.maskButtonTapped()
     }
     
     @objc
     func clearButtonTapped() {
-        self.idTextField.text = ""
-        clearButton.isHidden = true
-        loginButton.backgroundColor = switchButton.isOn ? UIColor(resource: .orange200) : UIColor(resource: .grey200)
-        loginButton.isEnabled = false
-        isActivate = false
+        self.delegate?.clearButtonTapped()
     }
     
     @objc
     func onClickSwitch() {
-        self.backgroundColor = switchButton.isOn ? UIColor(resource: .black) : UIColor(resource: .white)
-        self.idTextField.backgroundColor = switchButton.isOn ? UIColor(resource: .orange200) : UIColor(resource: .grey200)
-        self.passwordTextField.backgroundColor = switchButton.isOn ? UIColor(resource: .orange200) : UIColor(resource: .grey200)
-        self.modeLabel.textColor = switchButton.isOn ? UIColor(resource: .white) : UIColor(resource: .black)
-        self.titleLabel.textColor = switchButton.isOn ? UIColor(resource: .white) : UIColor(resource: .black)
-        self.maskButton.tintColor = switchButton.isOn ? UIColor(resource: .black) : UIColor(resource: .grey300)
-        self.clearButton.tintColor = switchButton.isOn ? UIColor(resource: .black) : UIColor(resource: .grey300)
-        self.idTextField.setPlaceholder(placeholder: "아이디",
-                                        fontColor: switchButton.isOn ? UIColor(resource: .white) : UIColor(resource: .grey300),
-                                        font: .pretendard(.subhead4))
-        self.passwordTextField.setPlaceholder(placeholder: "비밀번호",
-                                              fontColor: switchButton.isOn ? UIColor(resource: .white) : UIColor(resource: .grey300),
-                                              font: .pretendard(.subhead4))
-        
-        if !isActivate {
-            self.loginButton.backgroundColor = switchButton.isOn ? UIColor(resource: .orange200) : UIColor(resource: .grey200)
-        } else {
-            self.loginButton.backgroundColor = UIColor(resource: .primaryOrange)
-        }
-        
+        self.delegate?.onClickSwitch()        
     }
     
 }

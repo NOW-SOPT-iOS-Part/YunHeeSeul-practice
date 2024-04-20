@@ -89,8 +89,6 @@ extension LoginViewViewController: LoginViewDelegate {
         
         let welcomeVC = WelcomeViewController_DelegatePattern()
         welcomeVC.delegate = self
-        welcomeVC.modalPresentationStyle = .formSheet
-        welcomeVC.modalTransitionStyle = .flipHorizontal
         welcomeVC.id = self.loginView.idTextField.text ?? ""
         
         if loginView.switchButton.isOn {
@@ -103,7 +101,7 @@ extension LoginViewViewController: LoginViewDelegate {
             welcomeVC.view.backgroundColor = UIColor(resource: .white)
         }
         
-        self.present(welcomeVC, animated: true)
+        self.navigationController?.pushViewController(welcomeVC, animated: true)
     }
     
     func pushToWelcomeVC() {
