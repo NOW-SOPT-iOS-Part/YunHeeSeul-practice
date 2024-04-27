@@ -8,7 +8,7 @@
 import UIKit
 
 final class CheckUserInfoViewController: UIViewController {
-    private let logoImageView = UIImageView(image: .logo2)
+    private let logoImageView = UIImageView(image: .danggeun)
     private let idLabel = UILabel()
     private let nickNameLabel = UILabel()
     private let phoneNumberLabel = UILabel()
