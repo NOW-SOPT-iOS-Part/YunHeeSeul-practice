@@ -7,23 +7,69 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+import SnapKit
+import Then
+import Moya
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+final class SignUpViewController: UIViewController {
+    
+    private let rootView = SignUpView()
+    
+    
+    let userProvider = MoyaProvider<UserTargetType>(
+        plugins:  [MoyaLoggingPlugin()]
+    )
+    
+    override func loadView() {
+        self.view = rootView
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.backgroundColor = .white
+        setTarget()
     }
-    */
-
+    
+    private func setTarget() {
+        rootView.signUpButton.addTarget(self, action: #selector(signUpButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc private func signUpButtonDidTap() {
+        guard let id = rootView.idTextField.text else { return }
+        guard let password = rootView.passwordTextField.text else { return }
+        guard let nickName = rootView.nickNameTextField.text else { return }
+        guard let phoneNumber = rootView.phoneNumberTextField.text else { return }
+        
+        let request = SignUpRequestModel(
+            authenticationId: id,
+            password: password,
+            nickname: nickName,
+            phone: phoneNumber
+        )
+        
+        UserService.shared.signUp(request: request) { [weak self] response in
+            switch response {
+            case .success(let data):
+                guard let data = data as? SignUpResponseModel else { return }
+                dump(data)
+                self?.pushToCheckUserInfoVC()
+            case .requestErr:
+                print("요청 오류 입니다")
+            case .decodedErr:
+                print("디코딩 오류 입니다")
+            case .pathErr:
+                print("경로 오류 입니다")
+            case .serverErr:
+                print("서버 오류입니다")
+            case .networkFail:
+                print("네트워크 오류입니다")
+            }
+        }
+    }
+    
+    private func pushToCheckUserInfoVC() {
+        let checkUserInfoVC = CheckUserInfoViewController()
+        self.navigationController?.pushViewController(checkUserInfoVC, animated: true)
+    }
 }
