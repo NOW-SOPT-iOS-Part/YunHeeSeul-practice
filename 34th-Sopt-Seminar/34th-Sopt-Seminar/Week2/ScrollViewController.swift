@@ -14,6 +14,7 @@ class ScrollViewController: UIViewController {
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = UIColor(resource: .grey200)
+        scrollView.contentInsetAdjustmentBehavior = .never
         return scrollView
     }()
     
@@ -64,6 +65,7 @@ class ScrollViewController: UIViewController {
 
         setHierarchy()
         setLayout()
+        setStyle()
     }
 
 }
@@ -133,5 +135,9 @@ private extension ScrollViewController {
             $0.height.equalTo(UIScreen.main.bounds.size.height / 3)
             $0.bottom.equalTo(contentView) // contentView의 마지막 요소로, bottom을 설정합니다.
         }
+    }
+    
+    func setStyle() {
+        self.navigationController?.navigationBar.isHidden = true
     }
 }

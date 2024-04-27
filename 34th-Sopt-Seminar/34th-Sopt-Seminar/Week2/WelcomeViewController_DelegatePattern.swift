@@ -39,7 +39,7 @@ class WelcomeViewController_DelegatePattern: UIViewController {
         button.layer.cornerRadius = 6
         button.setTitle("메인으로", for: .normal)
         button.setTitleColor(UIColor(resource: .white), for: .normal)
-        button.addTarget(self, action: #selector(backToLoginButtonDidTap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(pushToMain), for: .touchUpInside)
         button.titleLabel?.font = UIFont.pretendard(.subhead1)
         return button
     }()
@@ -111,6 +111,7 @@ private extension WelcomeViewController_DelegatePattern {
     }
     
     func setStyle() {
+        self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .white
     }
     
@@ -130,6 +131,12 @@ private extension WelcomeViewController_DelegatePattern {
         } else {
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    @objc
+    func pushToMain() {
+        let chatVC = ChatViewController()
+        self.navigationController?.pushViewController(chatVC, animated: true)
     }
     
 }
