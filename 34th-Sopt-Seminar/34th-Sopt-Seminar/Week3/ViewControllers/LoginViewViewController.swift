@@ -61,6 +61,7 @@ extension LoginViewViewController: LoginViewDelegate {
         isActivate = false
     }
     
+    // 모드를 변경해줄 때 만약 컴포넌트가 늘어난다면 그 컴포넌트의 변경된 스타일을 지정해주기 위해 코드를 더 추가해주어야 함
     func onClickSwitch() {
         self.view.backgroundColor = loginView.switchButton.isOn ? UIColor(resource: .black) : UIColor(resource: .white)
         self.loginView.idTextField.backgroundColor = loginView.switchButton.isOn ? UIColor(resource: .orange200) : UIColor(resource: .grey200)
@@ -83,6 +84,7 @@ extension LoginViewViewController: LoginViewDelegate {
         }
     }
     
+    // 화면 전환 시 설정된 모드에 따라 다음 화면의 스타일을 변경해주어야 한느데 만약 컴포넌트가 늘어난다면 그 컴포넌트의 변경된 스타일을 지정해주기 위해 코드를 더 추가해주어야 함
     func presentWelcomeVC() {
         self.loginView.idTextField.resignFirstResponder()
         self.loginView.passwordTextField.resignFirstResponder()
